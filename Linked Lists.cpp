@@ -1,4 +1,5 @@
 #include <iostream>
+#include <set>
 using namespace std;
 
 struct Node {
@@ -77,17 +78,6 @@ class LinkedList {
         }
         cout<<endl;
     }
-    void bubbleSort()
-    {
-        Node *a, *b;
-        for (a = head; a->next != NULL; a = a->next) {
-            for (b = a->next; b != NULL; b = b->next) {
-                if (a->data > b->data) {
-                    swap(a->data, b->data);
-                }
-            }
-        }
-    }
     void insertionSort()
     {
         if (head == NULL)
@@ -106,8 +96,8 @@ class LinkedList {
     Node* findNthToLast(int);
 };
 
+
 /// 2.1 -Remove duplicates
-#include <set>
 void LinkedList::removeDups()
 {
     if (head == NULL)
@@ -121,10 +111,12 @@ void LinkedList::removeDups()
             current->next = current->next->next;
         else {
             table.insert(current->next->data);
-            current = current->next; // if current->next is deleted, pointer current retains.
+            current = current->next; 
+            // if current->next is deleted, pointer current retains.
         }
     }
 }
+
 
 /// 2.2 -Find the Nth to last element
 Node* LinkedList::findNthToLast(int n)
@@ -142,6 +134,7 @@ Node* LinkedList::findNthToLast(int n)
     return current;
 }
 
+
 /// 2.3 -Delete node n in the middle of linked list given only the access of this node.
 void deleteNode(Node *n)
 {
@@ -150,6 +143,7 @@ void deleteNode(Node *n)
     n->data = n->next->data;
     n->next = n->next->next;
 }
+
 
 /// 2.4 -Add up two numbers reversely stored in two lists, return the sum as a linked list.
 LinkedList addReversedLists(LinkedList list1, LinkedList list2, int carry = 0)
@@ -170,6 +164,7 @@ LinkedList addReversedLists(LinkedList list1, LinkedList list2, int carry = 0)
     res.addToTail(data % 10);
     return res;
 }
+
 
 /// 2.5 -Given a circular linked list, return node at the beginning of the loop.
 bool hasCycle(Node*);
@@ -210,40 +205,10 @@ bool hasCycle(Node *head) {
         }
         n1 = n1->next;
         n2 = n2->next;
-        if (n2 != NULL) {
+        if (n2 != NULL)
             n2 = n2->next;
-        }
-        else {
+        else
             break;
-        }
     }
     return false;
-}
-
-int main()
-{
-    int data;
-    cin>>data;
-    Node *a = new Node(data);
-    LinkedList list1(a);
-
-    for (int i=0; i<3; i++) {
-        cin>>data;
-        list1.addToTail(data);
-    }
-
-    int data2;
-    cin>>data2;
-    Node *b = new Node(data2);
-    LinkedList list2(b);
-
-    for (int i=0; i<5; i++) {
-        cin>>data2;
-        list2.addToTail(data2);
-    }
-
-    list1.printLinkedList();
-    list2.printLinkedList();
-
-    return 0;
 }
