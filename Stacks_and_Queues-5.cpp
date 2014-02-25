@@ -16,8 +16,8 @@ public:
         if (!s2.empty())
             return s2.top();
 
-        // s1 will be ordered with the newest elements on the top,
-        // while s2 will have the oldest elements on the top.
+        // push item into stack s1, when in need of the top item, 
+        // pop all items into stack s2, and return the top of s2.
         while (!s1.empty()) {
             s2.push(s1.top());
             s1.pop();
