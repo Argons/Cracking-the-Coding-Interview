@@ -32,7 +32,3 @@ bool isSubTree(TreeNode *root1, TreeNode *root2) {
     return isSubTree(root1->left, root2) ||
            isSubTree(root1->right, root2);
 }
-
-int main() {
-    return 0;
-}
