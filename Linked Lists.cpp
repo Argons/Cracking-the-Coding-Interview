@@ -66,31 +66,6 @@ class LinkedList {
         temp->next = current->next;
         current->next = temp;
     }
-    void printLinkedList()
-    {
-        if (head == NULL)
-            return;
-        cout<<head->data;
-        Node *current = head->next;
-        while (current != NULL) {
-            cout<<" -> "<<current->data;
-            current = current->next;
-        }
-        cout<<endl;
-    }
-    void insertionSort()
-    {
-        if (head == NULL)
-            return;
-        Node *a;
-        Node *b;
-        for (a = head->next; a != NULL; a = a->next) {
-            for (b = head; b != a; b = b->next) {
-                if (a->data < b->data)
-                    swap(a->data, b->data);
-            }
-        }
-    }
 
     void removeDups();
     Node* findNthToLast(int);
@@ -211,4 +186,8 @@ bool hasCycle(Node *head) {
             break;
     }
     return false;
+}
+
+int main() {
+    return 0;
 }
