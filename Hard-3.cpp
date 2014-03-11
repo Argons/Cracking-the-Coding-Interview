@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <ctime>
 using namespace std;
 
 // Write a method to randomly generate a set of m integers from an array of size n.
@@ -8,6 +9,7 @@ using namespace std;
 
 vector<int> randM(vector<int> &array, int m) {
     vector<int> subset;
+    srand(time(NULL));
     for (int i = 0; i < m; i++) {
         int index = rand() % (array.size()-i) + i;
         swap(array[i], array[index]);
